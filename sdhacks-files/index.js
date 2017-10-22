@@ -120,6 +120,43 @@ app.get('/:id/edit', function(req,res) {
 
 })
 
+  //Update the information of the post
+  app.put('/:id', function(req,res) {
+
+    var toSave = {
+      title: req.body.title,
+      date: req.body.date,
+      category: req.body.category,
+      amount: Number(req.body.amount),
+      sign: req.body.sign,
+      description: req.body.description
+    };
+
+    db.get(req.params.id, function(error, found) {
+      if(error) {
+        console.log(error);
+        res.redirect('/');
+      } else {
+        db.put({
+          _id: found._id,
+          _rev: found._rev,
+          title: req.body.title,
+          date: req.body.date,
+          category: req.body.category,
+          amount: Number(req.body.amount),
+          sign: req.body.sign,
+          description: req.body.description
+        }, function(error, saved) {
+          if(error) {
+            console.log(error);
+          }
+          res.redirect('/');
+        });
+      }
+    });
+
+  })
+
 // Listen for requests
 app.listen(PORT, () => {
   console.log('Server running on Port:', PORT);
