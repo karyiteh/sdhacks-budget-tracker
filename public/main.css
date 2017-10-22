@@ -38,6 +38,16 @@ a, a:hover {
    font-family: 'Roboto',sans-serif;
 }
 
+.list h2 a{
+   color: #efefef;
+   font-weight:bold;
+}
+
+.list h2 a:hover {
+  font-weight: bold;
+  color: #4d95bc;
+}
+
 .form, .form h1, .form .form-group {
    color: #efefef;
    font-family: 'Roboto', sans-serif;
