@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Node.js boilerplate",
   "scripts": {
-     "start": "node index.js"
+    "start": "node index.js"
   },
   "main": "index.js",
   "author": "Joel Sequeira <joelseq96@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chart.js": "^2.7.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "method-override": "^2.3.10",
