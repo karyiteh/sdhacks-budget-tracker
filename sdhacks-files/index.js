@@ -91,6 +91,22 @@ app.post('/new', function(req,res) {
     res.redirect('/');
   });
 })
+
+// Routes to a post page.
+app.get('/:id', function(req, res) {
+  // Obtain from the database of transaction.
+  db.get(req.params.id, function(error, found) {
+      if(error) {
+        console.log(error);
+        res.redirect('/');
+      } else {
+        res.render('show-transaction', { transaction: found });
+        console.log(found)
+      }
+    });
+})
+
+
 // Listen for requests
 app.listen(PORT, () => {
   console.log('Server running on Port:', PORT);

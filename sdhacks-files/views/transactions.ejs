@@ -9,11 +9,9 @@
 <% transactions.forEach(function (transaction) {%>
 
       <div>
-        <h2><%= transaction.doc.title %></h2>
+        <h2><a href="/<%= transaction.doc._id %>"><%= transaction.doc.title %></a></h2>
         <p><%= transaction.doc.date %></p>
         <p><%= transaction.doc.sign %>$<%= transaction.doc.amount %></p>
-        <p><%= transaction.doc.category %></p>
-        <p><%= transaction.doc.description %></p>
       </div>
 <% if ( Object.is((transaction.doc.sign),'+' )) {
   sumPos = sumPos + transaction.doc.amount;
