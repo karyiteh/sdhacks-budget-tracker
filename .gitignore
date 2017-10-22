@@ -1,2 +1,2 @@
 # don't include the node_module folders.
-./sdhacks-files/node_modules/*
+./node_modules/*
