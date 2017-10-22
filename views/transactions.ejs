@@ -5,7 +5,7 @@
     <div class="col-md-10 col-md-offset-1">
       <h1>My Transactions</h1>
       <a class="new-post btn btn-primary" href="/new">Create New Transaction</a>
-
+<div style="overflow:auto; width:400px; height:600px; border-style:solid; border-color:lightGrey; border-radius:8px;">
 <% transactions.forEach(function (transaction) {%>
 
       <div>
@@ -19,6 +19,7 @@
 else sumNeg = sumNeg + transaction.doc.amount;
 })
 %>
+</div>
 <h2> You have gotten $<%= sumPos %></h2>
 <h2> You have spent $<%= sumNeg %></h2>
 
