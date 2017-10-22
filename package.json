@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Node.js boilerplate",
   "scripts": {
-     "start": "node index.js"
+    "start": "node index.js"
   },
   "main": "index.js",
   "author": "Joel Sequeira <joelseq96@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "animated-3d-piechart": "0.0.5",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
