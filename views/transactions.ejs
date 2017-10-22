@@ -2,12 +2,13 @@
 
 <div class="container pad-top">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
       <!--<h1>My Transactions</h1>
       <a class="new-post btn btn-primary" href="/new">Create New Transaction</a>
       -->
 <div class="row">
-<div class="column" style="overflow:auto; border-style:solid; border-color:lightGrey; border-radius:8px;">
+<div class="column" style="overflow:auto; border-style:solid lightGrey 2px;
+border-radius:15px; background-color:#282828;">
+<div class="list">
 <% transactions.forEach(function (transaction) {%>
 
       <div>
@@ -40,9 +41,19 @@
 })
 %>
 </div>
-<div class="column">
-        <h2> You have gotten $<%= sumPos %></h2>
-        <h2> You have spent $<%= sumNeg %></h2>
+</div>
+<div class="column" style="padding-top:15%; padding-left:4%;">
+        <span style="font-size:30px; font-style:italic; color:#efefef;">
+        You have </span><span
+        style="font-size:38px; font-weight: bold ; color:green;">$<%= sumPos %>
+        </span>
+        <span style="font-size:30px; font-style:italic; color:#efefef;">
+        remaining</span><br>
+        <span style="font-size:30px; font-style:italic; color:#efefef">
+        You have spent 
+        </span>
+        <span style="font-size:38px; font-weight:bold; color:red;">
+        $<%= sumNeg %></span>
 </div>
 
 <!-- BEGIN WYE MUN'S EXPERIMENT -->
@@ -63,10 +74,10 @@
 
                         console.log(data);
 
-                        var options = {backgroundColor:'#FFFFFF', pieHole: 0.4,
+                        var options = {backgroundColor:'#000000', pieHole: 0.4,
                                         pieSliceTextStyle:{ color:'black',},
                                         colors:['#D2113F','#211D38','#F7FFF7',
-                                                '#AFFFA4','#f6c7b6'],legend:'none',
+                                                '#2bdce5','#f6c7b6'],legend:'none',
                                         animation:{duration:1000, easing:'in',
                                                    startup:'true',},};
 

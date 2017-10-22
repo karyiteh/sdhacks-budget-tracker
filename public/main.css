@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
+background-color:black;
 }
 
 .pad-top {
@@ -11,7 +12,17 @@ html, body {
 
 .btn {
   border-radius: 0px;
+  background-color: #0f7d8c;
+  border-style: none;
 }
+
+.panel-primary > .panel-heading {
+   background-color: #282828;
+}
+.panel-primary > .panel-body {
+   background-color: #dbdbdb;
+}
+
 
 h1 {
   margin-bottom: 50px;
@@ -20,6 +31,20 @@ h1 {
 a, a:hover {
   color: rgb(51, 51, 51);
   text-decoration: none;
+}
+
+.list, .list h2 a {
+   color:#efefef;
+   font-family: 'Roboto',sans-serif;
+}
+
+.form, .form h1, .form .form-group {
+   color: #efefef;
+   font-family: 'Roboto', sans-serif;
+}
+
+button, input, select, textarea {
+   color:black;
 }
 
 .inline-form {
