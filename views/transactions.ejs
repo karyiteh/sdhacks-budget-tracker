@@ -15,15 +15,63 @@
       </div>
 <% if ( Object.is((transaction.doc.sign),'+' )) {
   sumPos = sumPos + transaction.doc.amount;
-}
-else sumNeg = sumNeg + transaction.doc.amount;
+   } else {
+   
+   sumNeg = sumNeg + transaction.doc.amount;
+   
+   if (Object.is((transaction.doc.category),"groceries")) {
+      sumGroceries = sumGroceries + transaction.doc.amount;
+   } else if (Object.is((transaction.doc.category),"fun")) {
+      sumFun = sumFun + transaction.doc.amount;
+   } else if (Object.is ((transaction.doc.category),"shopping")) {
+      sumShopping = sumShopping + transaction.doc.amount;
+   }
+   else {
+      sumOther = sumOther + transaction.doc.amount;
+   }
+
+   console.log('Groceries:' + sumGroceries);
+   console.log('Fun: ' + sumFun);
+   console.log('Shopping: ' + sumShopping);
+   console.log('Other: ' + sumOther);
+   }
 })
 %>
 </div>
 <h2> You have gotten $<%= sumPos %></h2>
 <h2> You have spent $<%= sumNeg %></h2>
 
+       <!-- BEGIN WYE MUN'S EXPERIMENT -->
+       <div id="donut_single" style="max-width:100%; max-height:100%; width:900px; height: 700px; margin:auto;"></div>
 
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+           <script>
+                  google.charts.load('current', {'packages':['corechart']});
+                  google.charts.setOnLoadCallback(drawChart);
+
+                  function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                                        ['Category','Amount spent'], 
+                                        ['Groceries',<%= sumGroceries %>],
+                                        ['Fun', <%= sumFun %>],
+                                        ['Shopping',<%= sumShopping %>],
+                                        ['Other',<%= sumOther %>]]);
+
+                        console.log(data);
+
+                        var options = {backgroundColor:'#000000', pieHole: 0.4,
+                                        pieSliceTextStyle:{ color:'black',},
+                                        colors:['#D2113F','#211D38','#F7FFF7',
+                                                '#AFFFA4','#f6c7b6'],legend:'none',
+                                        animation:{duration:1000, easing:'in',
+                                                   startup:'true',},};
+
+                        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+                        chart.draw(data,options);
+                }
+
+
+         </script>
 
 
 
