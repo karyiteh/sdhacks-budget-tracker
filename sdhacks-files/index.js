@@ -106,6 +106,19 @@ app.get('/:id', function(req, res) {
     });
 })
 
+// Shows the edit
+app.get('/:id/edit', function(req,res) {
+  //Edit the data in the database of the transaction
+  db.get(req.params.id, function(error, found) {
+    if(error) {
+      console.log(error);
+      res.redirect('/');
+    } else {
+      res.render('edit-transaction', { transaction: found });
+    }
+  });
+
+})
 
 // Listen for requests
 app.listen(PORT, () => {
