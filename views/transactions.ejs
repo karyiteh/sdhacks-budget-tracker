@@ -6,7 +6,8 @@
       <!--<h1>My Transactions</h1>
       <a class="new-post btn btn-primary" href="/new">Create New Transaction</a>
       -->
-<div style="overflow:auto; width:400px; height:600px; border-style:solid; border-color:lightGrey; border-radius:8px;">
+<div class="row">
+<div class="column" style="overflow:auto; border-style:solid; border-color:lightGrey; border-radius:8px;">
 <% transactions.forEach(function (transaction) {%>
 
       <div>
@@ -39,11 +40,13 @@
 })
 %>
 </div>
-<h2> You have gotten $<%= sumPos %></h2>
-<h2> You have spent $<%= sumNeg %></h2>
+<div class="column">
+        <h2> You have gotten $<%= sumPos %></h2>
+        <h2> You have spent $<%= sumNeg %></h2>
+</div>
 
-       <!-- BEGIN WYE MUN'S EXPERIMENT -->
-       <div id="donut_single" style="max-width:100%; max-height:100%; width:900px; height: 700px; margin:auto;"></div>
+<!-- BEGIN WYE MUN'S EXPERIMENT -->
+<div id="donut_single" class="column" style="margin:auto;"></div>
 
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
            <script>
@@ -77,6 +80,7 @@
 
 
 
+    </div>
     </div>
   </div>
 </div>
