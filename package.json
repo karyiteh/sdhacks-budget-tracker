@@ -9,8 +9,8 @@
   "author": "Joel Sequeira <joelseq96@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "animated-3d-piechart": "0.0.5",
     "body-parser": "^1.18.2",
+    "chart.js": "^2.7.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "method-override": "^2.3.10",

@@ -40,6 +40,10 @@ app.set('view engine', 'ejs');
 //Summation of the total amount
 var sumPos = Number(0);
 var sumNeg = Number(0);
+var sumGroceries = Number(0);
+var sumFun = Number(0);
+var sumShopping = Number(0);
+var sumOther = Number(0);
 
 //pass in data to post for rendering into view to allow dynamically changing data
 app.get('/', function(req, res) {
@@ -52,7 +56,8 @@ app.get('/', function(req, res) {
       console.log(error);
     } else {
       res.render('transactions', { transactions: result.rows , sumPos: sumPos,
-      sumNeg: sumNeg});
+      sumNeg: sumNeg, sumGroceries: sumGroceries, sumFun: sumFun, 
+      sumShopping: sumShopping, sumOther: sumOther});
       console.log(result.rows);
     }
   });
