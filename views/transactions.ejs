@@ -7,7 +7,7 @@
       -->
 <div class="row">
 <div class="column" style="overflow:auto; border-style:solid lightGrey 2px;
-border-radius:15px; background-color:#282828;">
+border-radius:15px; height:500px; background-color:#282828;">
 <div class="list">
 <% transactions.forEach(function (transaction) {%>
 
@@ -44,11 +44,9 @@ border-radius:15px; background-color:#282828;">
 </div>
 <div class="column" style="padding-top:15%; padding-left:4%;">
         <span style="font-size:30px; font-style:italic; color:#efefef;">
-        You have </span><span
+        You have earned </span><span
         style="font-size:38px; font-weight: bold ; color:green;">$<%= sumPos %>
-        </span>
-        <span style="font-size:30px; font-style:italic; color:#efefef;">
-        remaining</span><br>
+        </span><br>
         <span style="font-size:30px; font-style:italic; color:#efefef">
         You have spent 
         </span>
