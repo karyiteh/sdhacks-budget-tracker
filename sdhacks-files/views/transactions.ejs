@@ -11,11 +11,24 @@
       <div>
         <h2><%= transaction.doc.title %></h2>
         <p><%= transaction.doc.date %></p>
-        <p>$<%= transaction.doc.amount %></p>
+        <p><%= transaction.doc.sign %>$<%= transaction.doc.amount %></p>
         <p><%= transaction.doc.category %></p>
         <p><%= transaction.doc.description %></p>
       </div>
-      <% }) %>
+<% if ( Object.is((transaction.doc.sign),'+' )) {
+  sumPos = sumPos + transaction.doc.amount;
+}
+else sumNeg = sumNeg + transaction.doc.amount;
+})
+%>
+<h1> Amount Gained is <%= sumPos %></h1>
+<h1> Amount Spent is <%= sumNeg %></h1>
+
+
+
+
+
+
     </div>
   </div>
 </div>

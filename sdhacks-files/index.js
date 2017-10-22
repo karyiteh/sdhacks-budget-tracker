@@ -37,38 +37,9 @@ app.set('view engine', 'ejs');
 // Destroy  |   /:id      |   DELETE    | Delete a particular post
 // =======================================================================
 
-
-
-
-//javascript objects
-// const transactions = [
-//   //{
-//  //  title: 'Transaction1',
-//  //  amount: 30,
-//  //  sign: 0,
-//  //  date:new Date('Mar 25 2017'),
-//  //  category:'Groceries',
-//  //  description:'Broccoli and cauliflower from Ralphs'
-//  //  },
-//  // {
-//  //   title: 'Transaction2',
-//  //   amount: 50,
-//  //   sign: 0,
-//  //   date:new Date('Mar 27 2017'),
-//  //   category:'Food',
-//  //   description:'Tasty Noodle House'
-//  // },
-//   {
-//    title: 'Transaction2',
-//    amount: 10,
-//    sign: 1,
-//    date:new Date('Apr 01 2017'),
-//    category:'Shopping',
-//    description:'Sold old clothes'
-//   }
-// ];
-
-//database functions
+//Summation of the total amount
+var sumPos = Number(0);
+var sumNeg = Number(0);
 
 //pass in data to post for rendering into view to allow dynamically changing data
 app.get('/', function(req, res) {
@@ -80,7 +51,8 @@ app.get('/', function(req, res) {
     if(error) {
       console.log(error);
     } else {
-      res.render('transactions', { transactions: result.rows });
+      res.render('transactions', { transactions: result.rows , sumPos: sumPos,
+      sumNeg: sumNeg});
       console.log(result.rows);
     }
   });
@@ -97,7 +69,7 @@ app.post('/new', function(req,res) {
   var newTransaction = {
     _id: new Date().toJSON(),
     title: req.body.title,
-    amount: req.body.amount,
+    amount: Number(req.body.amount),
     sign: req.body.sign,
     date: req.body.date,
     category: req.body.category,
