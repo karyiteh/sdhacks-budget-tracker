@@ -16,13 +16,13 @@
         <input type="date" name="date"><br>
 
         Category:<br>
-        <select id="sel_cat">
+        <select id="sel_cat" name="category">
         <option value="groceries">Groceries</option>
         <option value="fun">Fun</option>
         <option value="shopping">Shopping</option>
         <option value="new_cat">New Category</option>
         </select>
-        <input type="text" id="new_cat" style="display: none;" />
+        <input type="text" id="new_cat" style="display: none;" name="newcategory" />
         <script>
         $('#sel_cat').change(function() {
             $('#new_cat').css('display', ($(this).val() == 'new_cat') ? 'block' : 'none');
@@ -33,13 +33,13 @@
         <input type="number" name="amount" min="0" max="1000000"><br>
 
         Sign:<br>
-        <select id="sel_sign">
+        <select id="sel_sign" name="sign">
         <option value="sign_pos">+ (In)</option>
         <option value="sign_neg">- (Out)</option>
         </select><br>
 
         Description:<br>
-        <textarea id="desc_text"></textarea><br>
+        <textarea id="desc_text" name="description"></textarea><br>
 
         <input type="submit">
 

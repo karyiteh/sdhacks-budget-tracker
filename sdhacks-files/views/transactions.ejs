@@ -9,11 +9,11 @@
 <% transactions.forEach(function (transaction) {%>
 
       <div>
-        <h2><%= transaction.title %></h2>
-        <p><%= transaction.date %></p>
-        <p>$<%= transaction.amount %></p>
-        <p><%= transaction.category %></p>
-        <p><%= transaction.description %></p>
+        <h2><%= transaction.doc.title %></h2>
+        <p><%= transaction.doc.date %></p>
+        <p>$<%= transaction.doc.amount %></p>
+        <p><%= transaction.doc.category %></p>
+        <p><%= transaction.doc.description %></p>
       </div>
       <% }) %>
     </div>

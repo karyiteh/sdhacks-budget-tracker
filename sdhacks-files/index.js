@@ -74,7 +74,8 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
   db.allDocs({
     include_docs: true,
-    attachments: true
+    attachments: true,
+    descending: true
   }, function(error, result) {
     if(error) {
       console.log(error);
@@ -94,6 +95,7 @@ app.post('/new', function(req,res) {
   //res.send('You sent the transaction "' + req.body.title +'".');
   // Create a transaction object to store into the database.
   var newTransaction = {
+    _id: new Date().toJSON(),
     title: req.body.title,
     amount: req.body.amount,
     sign: req.body.sign,
@@ -103,8 +105,12 @@ app.post('/new', function(req,res) {
 
   }
 
+  if (req.body.newcategory) {
+    newTransaction.category=req.body.newcategory;
+  }
+
   // Add the transaction object into the database.
-  db.post(newTransaction, function(error, posted) {
+  db.put(newTransaction, function(error, posted) {
     if(error) {
       console.log(error);
     } else {
