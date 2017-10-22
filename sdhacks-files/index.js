@@ -157,6 +157,25 @@ app.get('/:id/edit', function(req,res) {
 
   })
 
+// Delete a transaction from the database.
+app.delete('/:id', function (req, res) {
+   db.get(req.params.id, function(err, found) {
+      if(err) {
+         console.log(err);
+         res.redirect('/');
+      } else {
+         db.remove(found, function(err, removed) {
+            if(err) {
+               console.log(err);
+               res.redirect('/');
+            } else {
+               res.redirect('/');
+            }
+      });
+      }
+    });
+});
+
 // Listen for requests
 app.listen(PORT, () => {
   console.log('Server running on Port:', PORT);
