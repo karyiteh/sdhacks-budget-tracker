@@ -91,6 +91,35 @@ app.post('/new', function(req,res) {
     res.redirect('/');
   });
 })
+
+// Routes to a post page.
+app.get('/:id', function(req, res) {
+  // Obtain from the database of transaction.
+  db.get(req.params.id, function(error, found) {
+      if(error) {
+        console.log(error);
+        res.redirect('/');
+      } else {
+        res.render('show-transaction', { transaction: found });
+        console.log(found)
+      }
+    });
+})
+
+// Shows the edit
+app.get('/:id/edit', function(req,res) {
+  //Edit the data in the database of the transaction
+  db.get(req.params.id, function(error, found) {
+    if(error) {
+      console.log(error);
+      res.redirect('/');
+    } else {
+      res.render('edit-transaction', { transaction: found });
+    }
+  });
+
+})
+
 // Listen for requests
 app.listen(PORT, () => {
   console.log('Server running on Port:', PORT);
