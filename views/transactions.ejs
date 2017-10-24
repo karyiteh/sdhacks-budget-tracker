@@ -1,10 +1,10 @@
 <% include ./partials/header.ejs %>
 
 <div class="container pad-top">
-  <div class="row">
-      <!--<h1>My Transactions</h1>
-      <a class="new-post btn btn-primary" href="/new">Create New Transaction</a>
-      -->
+<div class="row">
+<!--<h1>My Transactions</h1>
+<a class="new-post btn btn-primary" href="/new">Create New Transaction</a>
+-->
 <div class="row">
 <div class="column" style="overflow:auto; border-style:solid lightGrey 2px;
 border-radius:15px; height:500px; background-color:#282828;">
@@ -12,86 +12,86 @@ border-radius:15px; height:500px; background-color:#282828;">
 <% transactions.forEach(function (transaction) {%>
 
       <div>
-        <h2><a href="/<%= transaction.doc._id %>"><%= transaction.doc.title %></a></h2>
-        <p><%= transaction.doc.date %></p>
-        <p><%= transaction.doc.sign %>$<%= transaction.doc.amount %></p>
+      <h2><a href="/<%= transaction.doc._id %>"><%= transaction.doc.title %></a></h2>
+      <p><%= transaction.doc.date %></p>
+      <p><%= transaction.doc.sign %>$<%= transaction.doc.amount %></p>
       </div>
-<% if ( Object.is((transaction.doc.sign),'+' )) {
-  sumPos = sumPos + transaction.doc.amount;
-   } else {
-   
-   sumNeg = sumNeg + transaction.doc.amount;
-   
-   if (Object.is((transaction.doc.category),"groceries")) {
-      sumGroceries = sumGroceries + transaction.doc.amount;
-   } else if (Object.is((transaction.doc.category),"fun")) {
-      sumFun = sumFun + transaction.doc.amount;
-   } else if (Object.is ((transaction.doc.category),"shopping")) {
-      sumShopping = sumShopping + transaction.doc.amount;
-   }
-   else {
-      sumOther = sumOther + transaction.doc.amount;
-   }
+      <% if ( Object.is((transaction.doc.sign),'+' )) {
+      sumPos = sumPos + transaction.doc.amount;
+      } else {
 
-   console.log('Groceries:' + sumGroceries);
-   console.log('Fun: ' + sumFun);
-   console.log('Shopping: ' + sumShopping);
-   console.log('Other: ' + sumOther);
-   }
+      sumNeg = sumNeg + transaction.doc.amount;
+
+      if (Object.is((transaction.doc.category),"groceries")) {
+      sumGroceries = sumGroceries + transaction.doc.amount;
+      } else if (Object.is((transaction.doc.category),"fun")) {
+      sumFun = sumFun + transaction.doc.amount;
+      } else if (Object.is ((transaction.doc.category),"shopping")) {
+      sumShopping = sumShopping + transaction.doc.amount;
+      }
+      else {
+         sumOther = sumOther + transaction.doc.amount;
+      }
+
+      console.log('Groceries:' + sumGroceries);
+      console.log('Fun: ' + sumFun);
+      console.log('Shopping: ' + sumShopping);
+      console.log('Other: ' + sumOther);
+      }
 })
 %>
 </div>
 </div>
 <div class="column" style="padding-top:15%; padding-left:4%;">
-        <span style="font-size:30px; font-style:italic; color:#efefef;">
-        You have earned </span><span
-        style="font-size:38px; font-weight: bold ; color:green;">$<%= sumPos %>
-        </span><br>
-        <span style="font-size:30px; font-style:italic; color:#efefef">
-        You have spent 
-        </span>
-        <span style="font-size:38px; font-weight:bold; color:red;">
-        $<%= sumNeg %></span>
+<span style="font-size:30px; font-style:italic; color:#efefef;">
+You have earned </span><span
+style="font-size:38px; font-weight: bold ; color:green;">$<%= sumPos %>
+</span><br>
+<span style="font-size:30px; font-style:italic; color:#efefef">
+You have spent 
+</span>
+<span style="font-size:38px; font-weight:bold; color:red;">
+$<%= sumNeg %></span>
 </div>
 
 <!-- BEGIN WYE MUN'S EXPERIMENT -->
 <div id="donut_single" class="column" style="height:720px; padding-bottom:300px"></div>
 
-       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-           <script>
-                  google.charts.load('current', {'packages':['corechart']});
-                  google.charts.setOnLoadCallback(drawChart);
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-                  function drawChart() {
-                        var data = google.visualization.arrayToDataTable([
-                                        ['Category','Amount spent'], 
-                                        ['Groceries',<%= sumGroceries %>],
-                                        ['Fun', <%= sumFun %>],
-                                        ['Shopping',<%= sumShopping %>],
-                                        ['Other',<%= sumOther %>]]);
+function drawChart() {
+   var data = google.visualization.arrayToDataTable([
+         ['Category','Amount spent'], 
+         ['Groceries',<%= sumGroceries %>],
+         ['Fun', <%= sumFun %>],
+         ['Shopping',<%= sumShopping %>],
+         ['Other',<%= sumOther %>]]);
 
-                        console.log(data);
+   console.log(data);
 
-                        var options = {backgroundColor:'#000000', pieHole: 0.4,
-                                        pieSliceTextStyle:{ color:'black',},
-                                        colors:['#D2113F','#211D38','#F7FFF7',
-                                                '#2bdce5','#f6c7b6'],legend:'none',
-                                        animation:{duration:1000, easing:'in',
-                                                   startup:'true',},};
+   var options = {backgroundColor:'#000000', pieHole: 0.4,
+      pieSliceTextStyle:{ color:'black',},
+      colors:['#D2113F','#211D38','#F7FFF7',
+      '#2bdce5','#f6c7b6'],legend:'none',
+      animation:{duration:1000, easing:'in',
+         startup:'true',},};
 
-                        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-                        chart.draw(data,options);
-                }
-
-
-         </script>
+   var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+   chart.draw(data,options);
+}
 
 
+</script>
 
 
-    </div>
-    </div>
-  </div>
+
+
+</div>
+</div>
+</div>
 </div>
 
 <% include ./partials/footer.ejs %>
