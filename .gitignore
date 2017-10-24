@@ -1,2 +1,3 @@
 # don't include the node_module folders.
 ./node_modules/**
+./transactions_db/**
