@@ -1,3 +1,2 @@
-Team Budget Tracker App
-A finance tracking web application that keeps track of all the financial
-transactions of the user.
+##Budget Tracker App
+A finance tracking web application that keeps track of all the financial transactions of the user.
